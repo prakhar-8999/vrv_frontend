@@ -1,0 +1,13 @@
+services:
+  vrv:
+    build:
+      context: .
+    container_name: vrvfront
+    ports:
+      - "3001:3001"
+    networks:
+      - auth
+
+networks:
+  auth:
+    external: true
