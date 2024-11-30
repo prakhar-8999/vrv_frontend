@@ -42,21 +42,21 @@ export const EventForm = () => {
     e.preventDefault();
     console.log(formData);
 
-    // try {
-    if (id) {
-      await eventAPI.update(id, formData);
-      toast.success("Event updated successfully");
-    } else {
-      await eventAPI.create({
-        ...(formData as Omit<Event, "id">),
-        createdBy: user?.id || "0",
-      });
-      toast.success("Event created successfully");
+    try {
+      if (id) {
+        await eventAPI.update(id, formData);
+        toast.success("Event updated successfully");
+      } else {
+        await eventAPI.create({
+          ...(formData as Omit<Event, "id">),
+          createdBy: user?.id || "0",
+        });
+        toast.success("Event created successfully");
+      }
+      navigate("/events");
+    } catch (error) {
+      toast.error(id ? "Failed to update event" : "Failed to create event");
     }
-    navigate("/events");
-    // } catch (error) {
-    //   toast.error(id ? "Failed to update event" : "Failed to create event");
-    // }
   };
 
   const handleChange = (

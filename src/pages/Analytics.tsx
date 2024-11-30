@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { eventAPI, userAPI } from '../services/api';
-import { Event, User } from '../types';
-import { BarChart, Users, Calendar, TrendingUp } from 'lucide-react';
+import {Calendar, Users} from "lucide-react";
+import {useEffect, useState} from "react";
+import {eventAPI, userAPI} from "../services/api";
+import {Event, User} from "../types";
 
 export const Analytics = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -11,7 +11,7 @@ export const Analytics = () => {
     const fetchData = async () => {
       const [eventsData, usersData] = await Promise.all([
         eventAPI.getAll(),
-        userAPI.getAll()
+        userAPI.getAll(),
       ]);
       setEvents(eventsData);
       setUsers(usersData);
@@ -24,9 +24,9 @@ export const Analytics = () => {
       upcoming: 0,
       ongoing: 0,
       completed: 0,
-      cancelled: 0
+      cancelled: 0,
     };
-    events.forEach(event => {
+    events.forEach((event) => {
       statusCount[event.status]++;
     });
     return statusCount;
@@ -34,7 +34,7 @@ export const Analytics = () => {
 
   const getUsersByRole = () => {
     const roleCount: Record<string, number> = {};
-    users.forEach(user => {
+    users.forEach((user) => {
       roleCount[user.role] = (roleCount[user.role] || 0) + 1;
     });
     return roleCount;
@@ -45,7 +45,9 @@ export const Analytics = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Analytics Dashboard</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 mb-6">
+        Analytics Dashboard
+      </h1>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <div className="bg-white overflow-hidden shadow rounded-lg">
@@ -91,7 +93,9 @@ export const Analytics = () => {
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div className="bg-white shadow rounded-lg p-6">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">Events by Status</h2>
+          <h2 className="text-lg font-medium text-gray-900 mb-4">
+            Events by Status
+          </h2>
           <div className="space-y-4">
             {Object.entries(statusCount).map(([status, count]) => (
               <div key={status} className="flex items-center">
@@ -103,7 +107,7 @@ export const Analytics = () => {
                     <div
                       className="bg-indigo-600 rounded-full h-4"
                       style={{
-                        width: `${(count / events.length) * 100}%`
+                        width: `${(count / events.length) * 100}%`,
                       }}
                     />
                   </div>
@@ -117,7 +121,9 @@ export const Analytics = () => {
         </div>
 
         <div className="bg-white shadow rounded-lg p-6">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">Users by Role</h2>
+          <h2 className="text-lg font-medium text-gray-900 mb-4">
+            Users by Role
+          </h2>
           <div className="space-y-4">
             {Object.entries(roleCount).map(([role, count]) => (
               <div key={role} className="flex items-center">
@@ -129,7 +135,7 @@ export const Analytics = () => {
                     <div
                       className="bg-indigo-600 rounded-full h-4"
                       style={{
-                        width: `${(count / users.length) * 100}%`
+                        width: `${(count / users.length) * 100}%`,
                       }}
                     />
                   </div>
