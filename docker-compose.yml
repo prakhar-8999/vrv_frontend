@@ -10,4 +10,5 @@ services:
 
 networks:
   auth:
+    name: nginx
     external: true
