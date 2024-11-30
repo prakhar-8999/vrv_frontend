@@ -17,7 +17,7 @@ export const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Calendar className="h-8 w-8 text-indigo-600" />
-            <span className="ml-2 text-xl font-semibold">Event Manager</span>
+            <span className="ml-2 text-xl font-semibold">Event Management</span>
           </div>
 
           {user && (
