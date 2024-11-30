@@ -1,3 +1,4 @@
+import {Button} from "antd";
 import {Eye, EyeOff} from "lucide-react";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
@@ -26,9 +27,10 @@ export const Login = () => {
 
   const navigate = useNavigate();
   const {setUser, setPermissions} = useAuthStore();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: LoginForm) => {
-    // try {
+    setLoading(true);
     const user = await authAPI.login(data.email, data.password);
     if (user) {
       setUser(user);
@@ -42,9 +44,7 @@ export const Login = () => {
     } else {
       toast.error("Invalid credentials");
     }
-    // } catch (error) {
-    //   toast.error("Login failed");
-    // }
+    setLoading(false);
   };
   return (
     <>
@@ -125,12 +125,14 @@ export const Login = () => {
                 </div>
 
                 <div className="!mt-10">
-                  <button
-                    type="submit"
-                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  <Button
+                    htmlType="submit"
+                    loading={loading}
+                    disabled={loading}
+                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold !text-white shadow-sm hover:!bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Sign in
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
