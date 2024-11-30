@@ -1,0 +1,87 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin",
+      "name": "Admin"
+    },
+    {
+      "id": "2",
+      "email": "manager@example.com",
+      "password": "manager123",
+      "role": "manager",
+      "name": "Manager"
+    },
+    {
+      "id": "3",
+      "email": "user@example.com",
+      "password": "user123",
+      "role": "user",
+      "name": "Regular User"
+    }
+  ],
+  "roles": [
+    {
+      "id": "admin",
+      "name": "Admin",
+      "permissions": [
+        "create_event",
+        "edit_event",
+        "delete_event",
+        "view_event",
+        "manage_users",
+        "manage_roles",
+        "approve_events",
+        "view_analytics"
+      ]
+    },
+    {
+      "id": "manager",
+      "name": "Manager",
+      "permissions": [
+        "create_event",
+        "edit_event",
+        "delete_event",
+        "view_event",
+        "approve_events",
+        "view_analytics"
+      ]
+    },
+    {
+      "id": "user",
+      "name": "User",
+      "permissions": [
+        "view_event",
+        "register_for_event"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Annual Tech",
+      "description": "Join us for the biggest tech conference of the year",
+      "date": "2024-06-15",
+      "location": "Convention Center",
+      "capacity": 500,
+      "category": "Technology",
+      "status": "upcoming",
+      "createdBy": 1,
+      "attendees": []
+    },
+    {
+      "id": "fd8b",
+      "title": "Innotech",
+      "description": "This is an institutional event.",
+      "date": "2024-12-04",
+      "location": "Ghaziabad",
+      "capacity": "1000",
+      "category": "Technology",
+      "status": "ongoing",
+      "attendees": [],
+      "createdBy": "2"
+    }
+  ]
+}
