@@ -59,23 +59,23 @@ Use the following credentials to test the RBAC UI:
 
 ### **Login**
 
-![Login](assets/screenshots/login.png)
+![Login](https://raw.githubusercontent.com/prakhar-8999/vrv_frontend/main/src/assets/screenshots/login.png)
 
 ### **Dashboard**
 
-![Dashboard](assets/screenshots/dashboard.png)
+![Dashboard](https://raw.githubusercontent.com/prakhar-8999/vrv_frontend/main/src/assets/screenshots/dashboard.png)
 
 ### **Users**
 
-![Users](assets/screenshots/users.png)
+![Users](https://raw.githubusercontent.com/prakhar-8999/vrv_frontend/main/src/assets/screenshots/users.png)
 
 ### **Create Event**
 
-![Create Event](assets/screenshots/create_event.png)
+![Create Event](https://raw.githubusercontent.com/prakhar-8999/vrv_frontend/main/src/assets/screenshots/create_event.png)
 
 ### **Manage Roles**
 
-![Manage Roles](assets/screenshots/role_management.png)
+![Manage Roles](https://raw.githubusercontent.com/prakhar-8999/vrv_frontend/main/src/assets/screenshots/role_management.png)
 
 ---
 
