@@ -32,7 +32,10 @@ export const UserManagement = () => {
         await userAPI.update(editingUser.id, editingUser);
         toast.success("User updated successfully");
       } else {
-        await userAPI.create(editingUser as Omit<User, "id">);
+        await userAPI.create({
+          ...editingUser,
+          password: atob(editingUser?.password ?? ""),
+        } as Omit<User, "id">);
         toast.success("User created successfully");
       }
       setIsModalOpen(false);

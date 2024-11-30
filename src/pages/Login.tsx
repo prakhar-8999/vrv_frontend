@@ -22,7 +22,7 @@ export const Login = () => {
 
   const onSubmit = async (data: LoginForm) => {
     try {
-      const user = await authAPI.login(data.email, data.password);
+      const user = await authAPI.login(data.email, atob(data.password));
       if (user) {
         setUser(user);
         const role = await roleAPI.getAll();
