@@ -34,7 +34,7 @@ export const UserManagement = () => {
       } else {
         await userAPI.create({
           ...editingUser,
-          password: atob(editingUser?.password ?? ""),
+          password: editingUser?.password ?? "",
         } as Omit<User, "id">);
         toast.success("User created successfully");
       }

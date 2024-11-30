@@ -1,3 +1,5 @@
+import {Eye, EyeOff} from "lucide-react";
+import {useState} from "react";
 import {useForm} from "react-hook-form";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
@@ -11,6 +13,11 @@ interface LoginForm {
 }
 
 export const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
   const {
     register,
     handleSubmit,
@@ -21,25 +28,24 @@ export const Login = () => {
   const {setUser, setPermissions} = useAuthStore();
 
   const onSubmit = async (data: LoginForm) => {
-    try {
-      const user = await authAPI.login(data.email, atob(data.password));
-      if (user) {
-        setUser(user);
-        const role = await roleAPI.getAll();
-        if (role) {
-          const per = role.find((each) => each.id === user.role)?.permissions;
-          setPermissions(per || []);
-        }
-        toast.success("Login successful!");
-        navigate("/dashboard");
-      } else {
-        toast.error("Invalid credentials");
+    // try {
+    const user = await authAPI.login(data.email, data.password);
+    if (user) {
+      setUser(user);
+      const role = await roleAPI.getAll();
+      if (role) {
+        const per = role.find((each) => each.id === user.role)?.permissions;
+        setPermissions(per || []);
       }
-    } catch (error) {
-      toast.error("Login failed");
+      toast.success("Login successful!");
+      navigate("/dashboard");
+    } else {
+      toast.error("Invalid credentials");
     }
+    // } catch (error) {
+    //   toast.error("Login failed");
+    // }
   };
-
   return (
     <>
       <div className="flex h-screen flex-col justify-center items-center px-6 py-12 lg:px-8 bg-gray-50">
@@ -88,14 +94,28 @@ export const Login = () => {
                       Password
                     </label>
                   </div>
-                  <div className="mt-2">
+                  <div className="mt-2 relative">
                     <input
                       {...register("password", {
                         required: "Password is required",
                       })}
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                     />
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
+                    </button>
                     {errors.password && (
                       <p className="mt-1 text-sm text-red-600">
                         {errors.password.message}

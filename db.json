@@ -3,21 +3,21 @@
     {
       "id": "1",
       "email": "admin@vrvsecurityservices.com",
-      "password": "iÙ¢]·",
+      "password": "admin123",
       "role": "admin",
       "name": "Admin"
     },
     {
       "id": "2",
       "email": "manager@vrvsecurityservices.com",
-      "password": "©ÚêõÛ",
+      "password": "manager123",
       "role": "manager",
       "name": "Manager"
     },
     {
       "id": "3",
       "email": "user@vrvsecurityservices.com",
-      "password": "ºÇ«×m",
+      "password": "user123",
       "role": "user",
       "name": "Regular User"
     }
