@@ -1,8 +1,8 @@
 import axios from "axios";
 import {Event, Role, User} from "../types";
 
-// const API_URL = "https://vrv-backend.eveque.in";
-const API_URL = "http://localhost:3001/";
+const API_URL = "https://vrv-backend.eveque.in";
+// const API_URL = "http://localhost:3001/";
 
 const api = axios.create({
   baseURL: API_URL,
