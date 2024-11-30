@@ -2,21 +2,21 @@
   "users": [
     {
       "id": "1",
-      "email": "admin@example.com",
+      "email": "admin@vrvsecurityservices.com",
       "password": "admin123",
       "role": "admin",
       "name": "Admin"
     },
     {
       "id": "2",
-      "email": "manager@example.com",
+      "email": "manager@vrvsecurityservices.com",
       "password": "manager123",
       "role": "manager",
       "name": "Manager"
     },
     {
       "id": "3",
-      "email": "user@example.com",
+      "email": "user@vrvsecurityservices.com",
       "password": "user123",
       "role": "user",
       "name": "Regular User"
@@ -52,10 +52,7 @@
     {
       "id": "user",
       "name": "User",
-      "permissions": [
-        "view_event",
-        "register_for_event"
-      ]
+      "permissions": ["view_event", "register_for_event"]
     }
   ],
   "events": [
@@ -68,7 +65,7 @@
       "capacity": 500,
       "category": "Technology",
       "status": "upcoming",
-      "createdBy": 1,
+      "createdBy": "1",
       "attendees": []
     },
     {
